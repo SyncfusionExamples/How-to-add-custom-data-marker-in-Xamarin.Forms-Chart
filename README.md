@@ -8,8 +8,7 @@ By using the ChartDataMarker LabelTemplate, we can replace the data marker label
 
 The following code sample shows how to add a circle ring shape as a data marker using the Xamarin. Forms border.
 
-
-<chart:SfChart>
+    <chart:SfChart>
             . . .        
     <chart:SfChart.Series>
         <chart:SplineAreaSeries ItemsSource="{Binding AreaCollection}" 
@@ -35,21 +34,20 @@ The following code sample shows how to add a circle ring shape as a data marker 
                     </chart:ChartDataMarker.LabelStyle>
                 </chart:ChartDataMarker>
             </chart:SplineAreaSeries.DataMarker>
-. . .
         </chart:SplineAreaSeries>
     </chart:SfChart.Series>
-</chart:SfChart>
+    </chart:SfChart>
 
 Step 2:
 
 Using IValueConverter, we can customize each and every single view that is added as a data marker, the following code shows how to change the circle color based on the "Y" series of plots.
 
 XAML
-<ContentPage.Resources>
+    <ContentPage.Resources>
         <local:BorderColorConverter x:Key="borderColorConverter"/>
-</ContentPage.Resources> 
+    </ContentPage.Resources> 
 
-<chart:SfChart>
+    <chart:SfChart>
     . . . 
     <chart:SfChart.Series>
         . . .
@@ -66,19 +64,19 @@ XAML
                             </sfborder:SfBorder>
                         </DataTemplate>
                     </chart:ChartDataMarker.LabelTemplate>
-. . . 
                 </chart:ChartDataMarker>
             </chart:SplineAreaSeries.DataMarker>
         </chart:SplineAreaSeries>
     </chart:SfChart.Series>
-</chart:SfChart>
+    </chart:SfChart>
 
 
 IValueConverter:
-public class BorderColorConverter : IValueConverter
-{
-    static double YValue = 0;
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+
+    public class BorderColorConverter : IValueConverter
+    {
+      static double YValue = 0;
+      public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value != null)
         {
@@ -99,4 +97,4 @@ public class BorderColorConverter : IValueConverter
 
         return value;
     }
-}
+    }
