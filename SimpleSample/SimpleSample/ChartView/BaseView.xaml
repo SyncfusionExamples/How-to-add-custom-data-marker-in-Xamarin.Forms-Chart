@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:SimpleSample" 
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms" 
+             xmlns:sfborder="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" 
+             xmlns:sfbutoon="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Class="SimpleSample.BaseView">
+    <ContentPage.Resources>
+        <local:BorderColorConverter x:Key="borderColorConverter"/>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <local:BaseViewModel x:Name="viewmodel"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <gradient:SfGradientView Grid.Row="0" Grid.RowSpan="3">
+                <gradient:SfGradientView.BackgroundBrush>
+                    <gradient:SfLinearGradientBrush>
+                        <gradient:SfLinearGradientBrush.GradientStops>
+                            <!--<gradient:SfGradientStop Color="#17BE53" Offset="0.0" />
+                            <gradient:SfGradientStop Color="#8220FF" Offset="1.0" />-->
+                            <gradient:SfGradientStop Color="#49FFF4" Offset="0.0" />
+                            <gradient:SfGradientStop Color="#7520C6" Offset="1.0" />
+                        </gradient:SfLinearGradientBrush.GradientStops>
+                    </gradient:SfLinearGradientBrush>
+                </gradient:SfGradientView.BackgroundBrush>
+            </gradient:SfGradientView>
+            <sfborder:SfBorder BorderWidth="0" BorderColor="Transparent" Grid.Row="0">
+                <sfbutoon:SfSegmentedControl
+                    HeightRequest="10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    x:Name="segmentedControl"
+                    VisibleSegmentsCount="2"
+                    BackgroundColor="Transparent"
+                    BorderColor="Transparent"
+                    CornerRadius="25"
+                    SelectedIndex="-1" 
+                    ItemsSource="{Binding CustomViews}">
+
+                </sfbutoon:SfSegmentedControl>
+            </sfborder:SfBorder>
+            <sfborder:SfBorder Margin="5" Grid.Row="1" BorderColor="Transparent" CornerRadius="15" Padding="2" BackgroundColor="WhiteSmoke">
+                <sfborder:SfBorder.Content>
+                    <chart:SfChart BackgroundColor="Transparent">
+                        <chart:SfChart.PrimaryAxis>
+                            <chart:CategoryAxis ShowMajorGridLines="False" EdgeLabelsDrawingMode="Fit">
+                                <chart:CategoryAxis.Title>
+                                    <chart:ChartAxisTitle Text="Time Period"/>
+                                </chart:CategoryAxis.Title>
+                                <chart:CategoryAxis.AxisLineStyle>
+                                    <chart:ChartLineStyle StrokeColor="Transparent"/>
+                                </chart:CategoryAxis.AxisLineStyle>
+                            </chart:CategoryAxis>
+                        </chart:SfChart.PrimaryAxis>
+                        <chart:SfChart.SecondaryAxis>
+                            <chart:NumericalAxis ShowMajorGridLines="False" IsVisible="False" ShowMinorGridLines="False" TickPosition="Inside">
+                                <chart:NumericalAxis.LabelStyle>
+                                    <chart:ChartAxisLabelStyle TextColor="Transparent"/>
+                                </chart:NumericalAxis.LabelStyle>
+                                <chart:NumericalAxis.AxisLineStyle>
+                                    <chart:ChartLineStyle StrokeColor="Transparent" StrokeWidth="0" />
+                                </chart:NumericalAxis.AxisLineStyle>
+                                <chart:NumericalAxis.MajorTickStyle>
+                                    <chart:ChartAxisTickStyle StrokeWidth="0" StrokeColor="Transparent"/>
+                                </chart:NumericalAxis.MajorTickStyle>
+                            </chart:NumericalAxis>
+                        </chart:SfChart.SecondaryAxis>
+                        <chart:SfChart.Series>
+                            <chart:SplineAreaSeries ItemsSource="{Binding AreaCollection}" 
+                                                    XBindingPath="XData" 
+                                                    YBindingPath="YData" 
+                                                    StrokeColor="#0080DF" StrokeWidth="2">
+                                <chart:SplineAreaSeries.DataMarker>
+                                    <chart:ChartDataMarker x:Name="dataMarker">
+                                        <chart:ChartDataMarker.LabelTemplate>
+                                            <DataTemplate>
+                                                <sfborder:SfBorder 
+                                                    HeightRequest="10" 
+                                                    CornerRadius="20" 
+                                                    WidthRequest="10" 
+                                                    BorderColor="{Binding Converter={StaticResource borderColorConverter}}" 
+                                                    BorderWidth="2" 
+                                                    BackgroundColor="WhiteSmoke">
+                                                </sfborder:SfBorder>
+                                            </DataTemplate>
+                                        </chart:ChartDataMarker.LabelTemplate>
+                                        <chart:ChartDataMarker.LabelStyle>
+                                            <chart:DataMarkerLabelStyle LabelPosition="Center"/>
+                                        </chart:ChartDataMarker.LabelStyle>
+                                    </chart:ChartDataMarker>
+                                </chart:SplineAreaSeries.DataMarker>
+                                <chart:SplineAreaSeries.ColorModel>
+                                    <chart:ChartColorModel Palette="Custom">
+                                        <chart:ChartColorModel.CustomGradientColors>
+                                            <chart:ChartGradientColor StartPoint="0.5,1" EndPoint="0.5,0">
+                                                <chart:ChartGradientColor.GradientStops>
+                                                    <chart:ChartGradientStop Color="WhiteSmoke" Offset= "0"/>
+                                                    <chart:ChartGradientStop Color="#FF0080DF" Offset= "1"/>
+                                                </chart:ChartGradientColor.GradientStops>
+                                            </chart:ChartGradientColor>
+                                        </chart:ChartColorModel.CustomGradientColors>
+                                    </chart:ChartColorModel>
+                                </chart:SplineAreaSeries.ColorModel>
+                            </chart:SplineAreaSeries>
+                        </chart:SfChart.Series>
+                    </chart:SfChart>
+                </sfborder:SfBorder.Content>
+            </sfborder:SfBorder>
+
+            <local:PhotoLayout BindingContext="{x:Reference viewmodel}" Grid.Row="2"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
