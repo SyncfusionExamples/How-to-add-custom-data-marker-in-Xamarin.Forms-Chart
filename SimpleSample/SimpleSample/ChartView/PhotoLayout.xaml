@@ -1,14 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
-             xmlns:local="clr-namespace:SimpleSample"
-             xmlns:sfborder ="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              x:Class="SimpleSample.PhotoLayout">
-  <ContentView.Content>
+    <ContentView.Content>
         <Grid Padding="10" BindableLayout.ItemsSource="{Binding ItemSource}">
             <Grid.RowDefinitions>
                 <RowDefinition>
