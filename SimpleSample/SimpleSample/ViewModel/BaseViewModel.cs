@@ -1,5 +1,4 @@
-﻿using Syncfusion.XForms.Border;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -44,7 +43,7 @@ namespace SimpleSample
             {
                 fontfamily = "/Assets/FontAwesome.otf#FontAwesome5Pro-Regular";
             }
-            
+
             Image photo = new Image()
             {
                 VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -66,7 +65,7 @@ namespace SimpleSample
             photo.Source = new FontImageSource()
             {
                 FontFamily = fontfamily,
-               // Glyph = "\uf03e",
+                // Glyph = "\uf03e",
                 Glyph = "\uf148",
                 Size = 20,
                 Color = Color.Green,
@@ -90,13 +89,13 @@ namespace SimpleSample
             };
 
             var stack_1 = new StackLayout() { Orientation = StackOrientation.Horizontal, Spacing = 0, Padding = 0 };
-            Label l1 = new Label() { Text = "Increase" , FontSize = 15, FontAttributes = FontAttributes.Bold, TextColor = Color.Green, HorizontalTextAlignment= TextAlignment.Start, VerticalTextAlignment= TextAlignment.Center };
+            Label l1 = new Label() { Text = "Increase", FontSize = 15, FontAttributes = FontAttributes.Bold, TextColor = Color.Green, HorizontalTextAlignment = TextAlignment.Start, VerticalTextAlignment = TextAlignment.Center };
             stack_1.Children.Add(photo);
             stack_1.Children.Add(l1);
             Label l2 = new Label() { Text = "Decrease", FontSize = 15, FontAttributes = FontAttributes.Bold, TextColor = Color.Red, HorizontalTextAlignment = TextAlignment.Start, VerticalTextAlignment = TextAlignment.Center };
             var stack_2 = new StackLayout() { Orientation = StackOrientation.Horizontal, Spacing = 0, Padding = 0 };
-            stack_2.Children.Add(video); 
-            stack_2.Children.Add(l2); 
+            stack_2.Children.Add(video);
+            stack_2.Children.Add(l2);
             CustomViews.Add(stack_1);
             CustomViews.Add(stack_2);
 
@@ -130,7 +129,7 @@ namespace SimpleSample
                 new DataModel(){XData = "Oct", YData=28},
             };
         }
-      
+
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
